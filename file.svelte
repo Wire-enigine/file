@@ -1,18 +1,18 @@
 <script lang="ts">
-import { onmount } from 'svelte';
+import { onMount } from 'svelte';
 let temp:string;
-onmount(() => {
+onMount(() => {
  document.querySelector('#file-input').addEventListener('change', 
  (e1:any) => {
   //@ts-ignore
-  var file = e1.target.files[0];
+  let file = e1.target.files[0];
   if (!file) {
    return;
   }
   var reader = new FileReader();
   reader.onload = (e2:Event) => {
    //@ts-ignore
-   data = e2.target.result.tostring();
+   data = e2.target.result;
    window.alert(data);
   };
   reader.readAsText(file);
